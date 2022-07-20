@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-const { drawUsers, getStargazers, drawUsersSVG } = require("../utils");
+const { getStargazers, drawUsersSVG } = require("../utils");
 const { cache } = require("../middlewares")
 
 const axios = require("axios").default
