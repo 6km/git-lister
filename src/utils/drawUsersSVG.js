@@ -11,9 +11,18 @@ async function drawUsersSVG(users) {
     var avatarOffsetX = 0,
         avatarOffsetY = 0
 
-    var svgStart = `<svg width="${width}" height="${height}">`
+    var svgStart = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" role="img">\n`
+    var svgDefs = `
+    <defs>
+        <clipPath id="avatar-clip" r="${avatarSize / 2}">
+            <circle xmlns="http://www.w3.org/2000/svg" cx="20" cy="20" r="${avatarSize / 2}"/>
+        </clipPath>
+    </defs>
+    `
     var svgContnent = ``
     var svgEnd = `</svg>`
+
+    svgContnent += "<g>"
 
     for (var i = 0, len = users.length; i < len; i++) {
         avatarOffsetX += i === 0 ? 0 : avatarSize + avatarOffsetXConstant
@@ -24,18 +33,23 @@ async function drawUsersSVG(users) {
         }
 
         svgContnent += `
-        <foreignObject x="${avatarOffsetX}" y="${avatarOffsetY}" width="${avatarSize}" height="${avatarSize}">
+        <g transform="translate(${avatarOffsetX}, ${avatarOffsetY})">
             <image
+                x="0"
+                y="0"
                 width="${avatarSize}"
                 height="${avatarSize}"
-                src="${users[i].avatar_url}"
-                style="border-radius: 20px; box-shadow: 0 0 0 1px rgb(10 16 30 / 10%);"
+                href="${users[i].avatar_url}"
+                style="box-shadow: 0 0 0 1px rgb(10 16 30 / 10%);"
+                clip-path="url(#avatar-clip)"
             />
-        </foreignObject>
+        </g>
         `
     }
 
-    return svgStart + svgContnent + svgEnd;
+    svgContnent += "</g>"
+
+    return svgStart + svgDefs + svgContnent + svgEnd;
 }
 
 module.exports = drawUsersSVG

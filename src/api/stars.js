@@ -31,6 +31,7 @@ const axios = require("axios").default
 
 router.get("/:user/:repo", async (req, res) => {
     try {
+
         let { user, repo } = req.params;
 
         if (!user || !repo) throw Error();
@@ -38,6 +39,8 @@ router.get("/:user/:repo", async (req, res) => {
         let repoExists = (await axios.get(`https://github.com/${user}/${repo}`)).status !== 404
 
         if (repoExists) {
+            res.setHeader("Content-Type", "image/svg+xml");
+
             let stargazers = await getStargazers({ user, repo }, req)
 
             let stargazersSVG = await drawUsersSVG(stargazers)
