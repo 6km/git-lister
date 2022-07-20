@@ -29,8 +29,8 @@
 <br />
 <br />
 
-> ### ⚠ Warning
-> The service may not work if the limit is higher than 30
+### ⚠ Warning
+The service may not work if the limit is higher than 30
 
 <br />
 
