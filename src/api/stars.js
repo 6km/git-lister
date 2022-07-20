@@ -29,9 +29,12 @@ const axios = require("axios").default
     }
 })*/
 
-router.get("/:user/:repo", async (req, res) => {
-    try {
+router.get("/:user/:repo", cache(60), async (req, res) => {
+    let limit = parseInt(req.query.limit) || 60
 
+    if (limit <= 0 || limit > 60) limit = 60;
+
+    try {
         let { user, repo } = req.params;
 
         if (!user || !repo) throw Error();
@@ -41,13 +44,14 @@ router.get("/:user/:repo", async (req, res) => {
         if (repoExists) {
             res.setHeader("Content-Type", "image/svg+xml");
 
-            let stargazers = await getStargazers({ user, repo }, req)
+            let stargazers = await getStargazers({ user, repo, limit }, req)
 
             let stargazersSVG = await drawUsersSVG(stargazers)
 
             res.send(stargazersSVG)
         }
-    } catch {
+    } catch (err) {
+        console.log(err)
         res.sendStatus(404)
     }
 })

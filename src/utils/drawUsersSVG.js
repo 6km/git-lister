@@ -1,3 +1,5 @@
+const toBase64 = require("./toBase64")
+
 async function drawUsersSVG(users) {
     const avatarSize = 40
         , avatarsPerRow = 21
@@ -32,6 +34,8 @@ async function drawUsersSVG(users) {
             avatarOffsetY += avatarSize
         }
 
+        let imageBase64 = await toBase64(users[i].avatar_url)
+
         svgContnent += `
         <g transform="translate(${avatarOffsetX}, ${avatarOffsetY})">
             <image
@@ -39,7 +43,7 @@ async function drawUsersSVG(users) {
                 y="0"
                 width="${avatarSize}"
                 height="${avatarSize}"
-                href="${users[i].avatar_url}"
+                href="data:image/png;base64,${imageBase64}"
                 style="box-shadow: 0 0 0 1px rgb(10 16 30 / 10%);"
                 clip-path="url(#avatar-clip)"
             />

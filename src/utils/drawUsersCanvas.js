@@ -1,6 +1,6 @@
 const { createCanvas, loadImage } = require('canvas')
 
-async function drawUsers(users) {
+async function drawUsersCanvas(users) {
     const avatarSize = 40
         , avatarsPerRow = 21
         , avatarOffsetXConstant = -10
@@ -50,4 +50,4 @@ async function drawUsers(users) {
     return canvas;
 }
 
-module.exports = drawUsers
+module.exports = drawUsersCanvas
