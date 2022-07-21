@@ -35,19 +35,25 @@
 <br />
 <br />
 
-<br />
+
+
 
 ## 🔎 Examples
 
 ### Stargazers list
-
 ```html
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=21" />
 ```
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=21" />
 
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
+---
 
-<br />
+
+
+
+
+
+
 <br />
 
 ### ⚠ Warning
