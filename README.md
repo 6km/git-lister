@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <div align="center">
 
 <div>
@@ -32,12 +35,11 @@
 <br />
 <br />
 
-### ⚠ Warning
-The service may not work if the limit is higher than 30
-
 <br />
 
-## 🔎 Example:
+## 🔎 Examples
+
+### Stargazers list
 
 ```html
 <img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
@@ -47,5 +49,8 @@ The service may not work if the limit is higher than 30
 
 <br />
 <br />
+
+### ⚠ Warning
+The service may not work if the limit is higher than 30
 
 <a href="https://github.com/6km/git-lister#readme"><img src="./images/back-to-top.png"  /></a>
