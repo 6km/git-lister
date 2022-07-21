@@ -1,7 +1,7 @@
 <div align="center">
 
 <div>
-  <img src="" />
+  <img src="./images/logo.png" width="80" />
 
   <h3>Git Lister</h3>
   <svg width="600" height="200">
