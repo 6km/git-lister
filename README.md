@@ -37,12 +37,12 @@ The service may not work if the limit is higher than 30
 ## 🔎 Example:
 
 ```html
-<image src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
 ```
 
-<image src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=30" />
 
 <br />
 <br />
 
-[**↑ back to top**](https://github.com/6km/git-lister#readme)
+<a href="https://github.com/6km/git-lister#readme"><img src="./images/back-to-top.png"  /></a>
