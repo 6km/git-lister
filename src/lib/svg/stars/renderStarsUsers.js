@@ -1,6 +1,7 @@
-const toBase64 = require("./toBase64")
+const renderStarsButton = require("./renderStarsButton")
+const toBase64 = require("../../utils/toBase64")
 
-async function drawUsersSVG(users) {
+async function renderStarsUsers(users, options = {}) {
     const avatarSize = 40
         , avatarsPerRow = 21
         , avatarOffsetXConstant = -10
@@ -13,7 +14,7 @@ async function drawUsersSVG(users) {
     var avatarOffsetX = 0,
         avatarOffsetY = 0
 
-    var svgStart = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" role="img">\n`
+    var svgStart = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" role="img" style="backgrounddd: #1a1d2c;">\n`
     var svgDefs = `
     <defs>
         <clipPath id="avatar-clip" r="${avatarSize / 2}">
@@ -51,9 +52,25 @@ async function drawUsersSVG(users) {
         `
     }
 
+    let buttonX = avatarOffsetX + avatarSize + 5,
+        buttonY = avatarOffsetY,
+        buttonWidth = 165,
+        buttonHeight = 40
+
+    if (buttonX + buttonWidth >= width) {
+        buttonX = 0
+        buttonY += avatarSize
+    }
+
+    let button = renderStarsButton(buttonX, buttonY, buttonWidth, buttonHeight, {
+        text: options.moreButtonText
+    })
+
+    svgContnent += button
+
     svgContnent += "</g>"
 
     return svgStart + svgDefs + svgContnent + svgEnd;
 }
 
-module.exports = drawUsersSVG
+module.exports = renderStarsUsers

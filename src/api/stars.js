@@ -1,52 +1,35 @@
 const express = require("express");
 const router = express.Router()
 
-const { getStargazers, drawUsersSVG } = require("../utils");
-const { cache } = require("../middlewares")
+const { cache } = require("../middlewares");
 
-const axios = require("axios").default
+const constants = require("../lib/constants")
 
-/*router.get("/:user/:repo", cache(60) async (req, res) => {
-    try {
-        let { user, repo } = req.params;
+const renderStarUsers = require("../lib/svg/stars/renderStarsUsers");
+const getStargazers = require("../lib/github/getStargazers");
+const getRepoExists = require("../lib/github/getRepoExists");
 
-        if (!user || !repo) throw Error();
+router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res) => {
+    let limit = parseInt(req.query.limit) || constants.STARGAZERS.MAX_USERS_PER_IMAGE
+    let moreButtonText = req.query.moreText || constants.STARGAZERS.DEFAULT_MORE_BUTTON_TEXT
 
-        let repoExists = (await axios.get(`https://github.com/${user}/${repo}`)).status !== 404
-
-        if (repoExists) {
-            res.setHeader('Content-Type', 'image/png');
-
-            let stargazers = await getStargazers({ user, repo }, req)
-
-            drawUsers(stargazers).then(u => {
-                // Send stargazers as a PNG Buffer
-                res.send(u.toBuffer("image/png"))
-            })
-        }
-    } catch {
-        res.sendStatus(404)
-    }
-})*/
-
-router.get("/:user/:repo", cache(60), async (req, res) => {
-    let limit = parseInt(req.query.limit) || 60
-
-    if (limit <= 0 || limit > 60) limit = 60;
+    if (limit <= 0 || limit > constants.STARGAZERS.MAX_USERS_PER_IMAGE) limit = constants.STARGAZERS.MAX_USERS_PER_IMAGE;
 
     try {
         let { user, repo } = req.params;
 
         if (!user || !repo) throw Error();
 
-        let repoExists = (await axios.get(`https://github.com/${user}/${repo}`)).status !== 404
+        let repoExists = await getRepoExists(user, repo)
 
         if (repoExists) {
             res.setHeader("Content-Type", "image/svg+xml");
 
             let stargazers = await getStargazers({ user, repo, limit }, req)
 
-            let stargazersSVG = await drawUsersSVG(stargazers)
+            let stargazersSVG = await renderStarUsers(stargazers, {
+                moreButtonText
+            })
 
             res.send(stargazersSVG)
         }

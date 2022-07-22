@@ -5,7 +5,8 @@ async function getStargazers({ user, repo, limit }, req) {
 
     let stargazers = (await axios.get(endpoint, {
         headers: {
-            'X-Forwarded-For': req.ip
+            'X-Forwarded-For': req.ip,
+            'Authorization': `token ${process.env.GITHUB_ACCESS_TOKEN}`
         }
     })).data
 
