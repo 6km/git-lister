@@ -42,9 +42,10 @@
 
 ### Stargazers list
 ```html
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=15" />
+![Thanks to all stargazers](https://git-lister.onrender.com/api/stars/reactplay/react-play?v&limit=7)
 ```
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=15" />
+
+![alt](https://git-lister.onrender.com/api/stars/reactplay/react-play?v&limit=7)
 
 ---
 
