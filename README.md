@@ -42,9 +42,9 @@
 
 ### Stargazers list
 ```html
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=21" />
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=15" />
 ```
-<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=21" />
+<img src="https://git-lister.onrender.com/api/stars/reactplay/react-play?limit=15" />
 
 ---
 
@@ -57,6 +57,6 @@
 <br />
 
 ### ⚠ Warning
-The service may not work if the limit is higher than 30
+The maximum limit is 15 stargazers
 
 <a href="https://github.com/6km/git-lister#readme"><img src="./images/back-to-top.png"  /></a>
