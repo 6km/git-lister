@@ -31,6 +31,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
                 moreButtonText
             })
 
+            res.setHeader("Cache-Control", "no-cache")
             res.send(stargazersSVG)
         }
     } catch (err) {
