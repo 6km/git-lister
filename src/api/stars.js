@@ -32,6 +32,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
             })
 
             res.setHeader("Cache-Control", "no-cache")
+            res.setHeader("Expires", "0")
             res.send(stargazersSVG)
         }
     } catch (err) {
