@@ -8,9 +8,11 @@ app.use(express.json({ extended: false }));
 
 const apiRoutes = require("./api");
 
+app.disable("etag")
+app.disable('x-powered-by')
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.use("/api", apiRoutes);
-app.disable("etag");
 
 const PORT = process.env.PORT || 8080;
 
