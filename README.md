@@ -19,7 +19,7 @@
       </linearGradient>
     </defs>
     <text fill="url(#rainbow)">
-      <tspan>A service that allows you to list stargazers</tspan>
+      <tspan>A service that allows you to list supporters</tspan>
       <br />
       <tspan>of your repo in the README</tspan>
     </text>
