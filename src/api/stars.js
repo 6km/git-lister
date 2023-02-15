@@ -16,6 +16,8 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
     if (limit <= 0 || limit > constants.STARGAZERS.MAX_USERS_PER_IMAGE) limit = constants.STARGAZERS.MAX_USERS_PER_IMAGE;
 
     try {
+        res.setHeader("Cache-Control", "public, max-age=0, must-revalidate")
+
         let { user, repo } = req.params;
 
         if (!user || !repo) throw Error();
@@ -31,7 +33,6 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
                 moreButtonText
             })
 
-            res.setHeader("Cache-Control", "public, max-age=0, must-revalidate")
             res.send(stargazersSVG)
         }
     } catch (err) {
