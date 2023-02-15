@@ -39,7 +39,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
         }
     } catch (err) {
         // console.log(err)
-        res.sendStatus(429)
+        res.sendStatus(500)
     }
 })
 
