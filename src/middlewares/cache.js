@@ -6,7 +6,7 @@ var cache = (duration) => {
         let cachedBody = mcache.get(key)
 
         if (cachedBody) {
-            res.status(200).send(cachedBody)
+            res.status(304).send(cachedBody)
         } else {
             res.sendResponse = res.send
             res.send = (body) => {
