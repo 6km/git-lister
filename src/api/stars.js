@@ -31,7 +31,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
                 moreButtonText
             })
 
-            res.setHeader("Cache-Control", "no-cache")
+            res.setHeader("Cache-Control", "public, max-age=0, must-revalidate")
             res.setHeader("Expires", "0")
             res.send(stargazersSVG)
         }
