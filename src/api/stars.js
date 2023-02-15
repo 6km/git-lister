@@ -34,10 +34,12 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
             })
 
             res.send(stargazersSVG)
+        } else {
+            res.sendStatus(404)
         }
     } catch (err) {
         // console.log(err)
-        res.sendStatus(404)
+        res.sendStatus(429)
     }
 })
 
