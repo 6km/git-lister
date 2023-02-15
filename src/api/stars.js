@@ -16,7 +16,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
     if (limit <= 0 || limit > constants.STARGAZERS.MAX_USERS_PER_IMAGE) limit = constants.STARGAZERS.MAX_USERS_PER_IMAGE;
 
     try {
-        res.setHeader("Cache-Control", "public, max-age=60, must-revalidate")
+        res.setHeader(`Cache-Control", "public, max-age=${constants.DEFAULT_CACHE_TIME}, must-revalidate`)
 
         let { user, repo } = req.params;
 
