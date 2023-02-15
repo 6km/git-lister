@@ -38,7 +38,7 @@ router.get("/:user/:repo", cache(constants.DEFAULT_CACHE_TIME), async (req, res)
             res.sendStatus(404)
         }
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.sendStatus(429)
     }
 })
