@@ -10,6 +10,7 @@ const apiRoutes = require("./api");
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use("/api", apiRoutes);
+app.disable("etag");
 
 const PORT = process.env.PORT || 8080;
 
