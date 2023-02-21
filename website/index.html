@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/tailwindcss.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>GitLister - List supporters of your repo in the README</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+</head>
+
+<body>
+    <div id="app">
+        <div class="text-center flex flex-col items-center mt-32">
+            <img alt="" draggable="false" class="w-24 my-4 select-none" src="./assets/logo.png" />
+            <h1 class="text-3xl font-bold text-gray-700">
+                GitLister
+            </h1>
+            <p class="w-64 mt-2 font-mono">
+                List supporters of your repo in the
+                <span class="font-semibold">README</span>
+            </p>
+        </div>
+
+        <div class="container mx-auto px-4 mt-16">
+            <div class="flex flex-col gap-16 items-center">
+                <input id="repo-search-input" class="w-96 rounded-xl bg-gray-200 p-4 mx-auto"
+                    placeholder="e.g. 6km/git-lister" autofocus @keyup="handleRepoPathChange" />
+
+                <div>
+                    <div class="shadow-lg bg-gray-100 w-[470px] p-4 rounded-xl ring ring-gray-200 ring-[1px]">
+                        <div>
+                            <h4 class="flex items-center gap-2 font-semibold">
+                                <span>
+                                    <img class="emoji w-5" src="./assets/star-struck.png" />
+                                </span>
+                                Stargazers List
+                            </h4>
+                        </div>
+
+                        <div>
+                            <img id="star-image" class="mt-4" :src="getStarURL()" onerror="this.style.display='none'"
+                                onload="this.style.display='block'" />
+
+                            <div class="relative bg-gray-200 rounded-lg p-2 mt-4 ring ring-gray-300 ring-1 shadow">
+                                <button
+                                    class="select-none uppercase absolute top-0 right-0 font-mono font-semibold px-2 bg-gray-800 text-white shadow-xl rounded-bl rounded-tr-lg"
+                                    @click="handleStarMarkdownCopy">
+                                    copy
+                                </button>
+                                <code class="markdown">
+                                    {{getStarMarkdown()}}
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
