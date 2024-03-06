@@ -1,33 +1,32 @@
-html,
-body {
-    background: linear-gradient(180deg, white, rgb(214, 219, 224));
-    background-repeat: no-repeat;
-    background-size: contain;
-    font-family: 'Inter', Helvetica, sans-serif;
-    height: 100%;
+:root {
+	background-image: linear-gradient(180deg, white, rgb(214, 219, 224));
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
+	font-family: 'Inter', Helvetica, sans-serif;
 }
 
 input:focus-visible {
-    /* outline: 2px solid rgba(0, 0, 65, 0.136); */
-    outline: 1px solid rgba(161, 161, 161, 0.2) !important;
-    /* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00005, 0, 0, 1, 0, 0, 0, 0, 0.975); */
+	/* outline: 2px solid rgba(0, 0, 65, 0.136); */
+	outline: 1px solid rgba(161, 161, 161, 0.2) !important;
+	/* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.00005, 0, 0, 1, 0, 0, 0, 0, 0.975); */
 }
 
 
 .emoji {
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    pointer-events: none;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	pointer-events: none;
 }
 
 #star-image {
-    aspect-ratio: 32/2;
-    width: 100%;
-    background-color: rgba(220, 220, 220, 0.309);
-    border-radius: 4px;
+	aspect-ratio: 32/2;
+	width: 100%;
+	background-color: rgba(220, 220, 220, 0.309);
+	border-radius: 4px;
 }
 
 .markdown {
-    word-break: break-all;
+	word-break: break-all;
 }
